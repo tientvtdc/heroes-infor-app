@@ -9,7 +9,7 @@ const southWest = L.latLng(-90, -180); // Góc tây nam
 const northEast = L.latLng(90, 180);   // Góc đông bắc
 const bounds = L.latLngBounds(southWest, northEast);
 
-const map = L.map('map', {
+ export const map = L.map('map', {
     minZoom: 1, // Mức độ thu phóng tối thiểu
     maxZoom: 18, // Mức độ thu phóng tối đa
     maxBounds: bounds
@@ -31,7 +31,7 @@ const searchMartyrs = async (e, listSearchResultBox) => {
                 const button = document.createElement('button');
                 button.className = 'cursor-pointer rounded-md bg-white w-full py-2 __item-select-martyrs border-[1px] hover:bg-gray-50';
                 button.addEventListener('click', () => {
-                    showInformation(el.id,map)
+                    showInformation(el.id)
                 });
                 const h6 = document.createElement('h6');
                 h6.className = 'text-gray-600 font-bold text-xl';

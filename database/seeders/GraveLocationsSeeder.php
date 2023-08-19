@@ -21,6 +21,8 @@ class GraveLocationsSeeder extends Seeder
                 'other_info' => 'Thông tin mẫu cho lô mộ 1',
                 'grave_type' => 'Loại A',
                 'has_remains' => true,
+                'latitude'=>'-33.24413227097652',
+                'longitude'=>'-64.89843964576723'
             ],
             [
                 'grave_number' => '1',
@@ -30,6 +32,8 @@ class GraveLocationsSeeder extends Seeder
                 'other_info' => 'Thông tin mẫu cho lô mộ 2',
                 'grave_type' => 'Loại A',
                 'has_remains' => true,
+                'latitude'=>'-34.12146681321436',
+                'longitude'=>'22.99218535423279'
             ],
         ];
 
