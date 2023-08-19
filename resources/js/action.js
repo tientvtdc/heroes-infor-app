@@ -1,8 +1,8 @@
 import api from "./api";
 import L from 'leaflet';
-import { markers } from "./search";
+import { map, markers } from "./search";
 
-const showInformation = async (id, map) => {
+const showInformation = async (id) => {
     console.log(id, map);
     const martyrsInformationBlock = document.querySelector('.__martyrs-information-block');
     const respon = await api.get('/martyrs/' + id);
@@ -15,14 +15,15 @@ const showInformation = async (id, map) => {
         <p>Chức vụ: <span class="font-semibold">${respon.data.position}</span></p>
     `;
     markers.clearLayers();
-    const marker = L.marker([45.71847558442443, 22.929689884185795]).addTo(map);
-    marker.bindPopup("Đây là phần mộ của Liệt sỹ "+respon.data.full_name);
+    const marker = L.marker([respon.data.grave_location.latitude, respon.data.grave_location.longitude]);
 
+    marker.bindPopup("Đây là phần mộ của Liệt sỹ " + respon.data.full_name);
     // Thêm popup (cửa sổ thông tin) khi nhấp vào marker
     marker.on('click', function () {
         marker.openPopup();
     });
-    map.flyTo([45.71847558442443, 22.929689884185795], 3, {
+    markers.addLayer(marker);
+    map.flyTo([respon.data.grave_location.latitude, respon.data.grave_location.longitude], 4, {
         duration: 1,  // Thời gian animation (giây)
         easeLinearity: 0.25 // Điều chỉnh mức độ mượt mà của animation
     });
