@@ -17,6 +17,8 @@ class CreateGraveLocationsTable extends Migration
             $table->text('other_info')->nullable();
             $table->string('grave_type');
             $table->boolean('has_remains');
+            $table->string('latitude');
+            $table->string('longitude');
             $table->timestamps();
         });
     }
